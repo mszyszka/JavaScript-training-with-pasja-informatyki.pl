@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nauka js</title>
+    <script type="text/javascript">
+        function check() {
+            var number = document.getElementById("numbertxt").value;
+            if (number > 0) {
+                document.getElementById("result").innerHTML = "Dodatnia";
+            }
+            else if (number < 0) {
+                document.getElementById("result").innerHTML = "Ujemna ";
+            }
+            else if (number == "0") {
+                document.getElementById("result").innerHTML = "Zero";
+            }
+            else {
+                document.getElementById("result").innerHTML = "Wpisz liczbę!";
+            }
+        }
+
+        function showMe() {
+            var number1 = document.getElementById("first-number").value;
+            var number2 = document.getElementById("second-number").value;
+            var text = "";
+            
+                for (i = number1; i <= number2; i++) {
+                    text = text + i + " ";
+                }
+                document.getElementById("result2").innerHTML = text;
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" id="numbertxt">
+    <input type="button" value="Sprawdź" onclick="check()">
+    <div id="result"></div>
+    <br />
+    <br />
+    <br />
+    <input type="text" id="first-number">
+    <input type="text" id="second-number">
+    <input type="button" value="Pokaż" onclick="showMe()">
+    <div id="result2"></div>
+</body>
+
+</html>
