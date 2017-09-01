@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="utf-8">
+    <title>Nauka js. Zegarek</title>
+    <script type="text/javascript">
+        function counting() {
+            //            This is object with info abot date.
+            //            I can pull out of it particular parts
+            //            with info about day, year, hour etc.
+            var tooday = new Date();
+            //            Im pulling particular parts from new Date object
+            var day = tooday.getDate();
+            var year = tooday.getFullYear();
+            var month = tooday.getMonth() + 1;
+            var hours = tooday.getHours();
+            if (hours < 10) hours = "0" + hours;
+            var minutes = tooday.getMinutes();
+            if (minutes < 10) minutes = "0" + minutes;
+            var seconds = tooday.getSeconds();
+            if (seconds < 10) seconds = "0" + seconds;
+            document.getElementById("clock").innerHTML = day + "/" + month + "/" + year + " | " + hours + ":" + minutes + ":" + seconds;
+           
+            
+            setTimeout("counting()", 1000);
+        }
+    </script>
+</head>
+
+<body onload="counting()">
+    <div id="clock"></div>
+
+</body>
+
+</html>
