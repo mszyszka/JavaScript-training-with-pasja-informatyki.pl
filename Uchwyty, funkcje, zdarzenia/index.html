@@ -4,6 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Nauka js</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript">
         function check() {
             var number = document.getElementById("numbertxt").value;
@@ -31,10 +32,26 @@
                 }
                 document.getElementById("result2").innerHTML = text;
         }
+        
+        var number = Math.floor(Math.random()+4)+1;
+        
+        function hideIt() {
+            $("#slider").fadeOut(500);
+        }
+        function switchIt() {
+                
+                number++; if(number > 4) number=1;
+                var file = "<img src=\"img/photo"+number+".jpeg\"/>";
+                document.getElementById("slider").innerHTML = file;
+                $("#slider").fadeIn(500);
+            
+                setTimeout("switchIt()", 5000);
+                setTimeout("hideIt()", 4500);
+        }
     </script>
 </head>
 
-<body>
+<body onload="switchIt()">
     <input type="text" id="numbertxt">
     <input type="button" value="Sprawdź" onclick="check()">
     <div id="result"></div>
@@ -45,6 +62,10 @@
     <input type="text" id="second-number">
     <input type="button" value="Pokaż" onclick="showMe()">
     <div id="result2"></div>
+    <br />
+    <br />
+    <br />
+    <div id="slider"></div>
 </body>
 
 </html>
