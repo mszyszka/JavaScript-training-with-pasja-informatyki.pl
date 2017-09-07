@@ -2,6 +2,7 @@ body {
     background-color: #000000;
     color: lightgray;
     font-size: 24px;
+    font-family: 'Share Tech Mono', monospace;
 }
 .clearfix {
     clear: both;

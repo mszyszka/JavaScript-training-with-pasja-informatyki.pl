@@ -1,12 +1,8 @@
 var password = "Bez pracy nie ma kołaczy";
 password = password.toUpperCase();
-
 var password_length = password.length;
-
 var password1 = "";
-
-for (i=0; i < password_length; i++)
-{
+for (i = 0; i < password_length; i++) {
     if (password.charAt(i) == " ") password1 = password1 + " ";
     else password1 = password1 + "-";
 }
@@ -14,11 +10,8 @@ for (i=0; i < password_length; i++)
 function write_password() {
     document.getElementById("game-space").innerHTML = password1;
 }
-
 window.onload = start;
-
 var lettersArry = new Array(35);
-
 lettersArry[0] = "A";
 lettersArry[1] = "Ą";
 lettersArry[2] = "B";
@@ -55,15 +48,47 @@ lettersArry[32] = "Z";
 lettersArry[33] = "Ż";
 lettersArry[34] = "Ź";
 
-
-function start(){
+function start() {
     var div_content = "";
-    for (i=0; i<35; i++){
+    for (i = 0; i < 35; i++) {
         var element = "letter" + i;
-        div_content = div_content + '<div class="letter" id="'+element+'">'+lettersArry[i]+'</div>';
-        if ((i+1) % 7==0) div_content = div_content + '<div class="clearfix"></div>';
+        div_content = div_content + '<div class="letter" onclick="check(' + i + ')" id="' + element + '">' + lettersArry[i] + '</div>';
+        if ((i + 1) % 7 == 0) div_content = div_content + '<div class="clearfix"></div>';
     }
     document.getElementById("alphabet").innerHTML = div_content;
-    
     write_password();
 }
+String.prototype.setSign = function (place, sign) {
+    if (place > this.length - 1) return this.toString();
+    else return this.substr(0, place) + sign + this.substr(place + 1);
+}
+
+function check(nr)
+{    
+    var hit = false;
+    
+    for (i = 0; i < password_length; i++)
+    {
+        if (password.charAt(i) == lettersArry[nr])
+        {
+            password1 = password1.setSign(i, lettersArry[nr]);
+            hit = true;
+        }
+    }
+    
+    if (hit == true) 
+    {
+        var element = "letter" + nr;
+        document.getElementById(element).style.background = "#003300";
+        document.getElementById(element).style.color = "#00C000";
+        document.getElementById(element).style.border = "3px solid #00C000";
+        document.getElementById(element).style.cursor = "default";
+        
+        write_password();
+    }
+    
+    else {
+        document.getElementById(element).style.background = "#234453";
+    }
+}
+//Skończyłem na godzine i siedemnastu minutach
